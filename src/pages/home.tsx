@@ -15,7 +15,7 @@ import {
 } from "antd";
 import ScreenerItem from "@/models/ScreenerItem";
 import { getScreenerItems2 } from "@/services/FetchData";
-import StockTable from "./partials/StockTable";
+import StockTable from "../components/StockTable";
 import { NewPosition } from "@/models/Position";
 
 const { Header, Content, Footer } = Layout;

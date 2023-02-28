@@ -3,8 +3,7 @@ import styles from "../app/page.module.css";
 import { useTable, useSortBy } from "react-table";
 import ScreenerItem from "@/models/ScreenerItem";
 import { getScreenerItems, getScreenerItems2 } from "@/services/FetchData";
-import StockTable from "./partials/StockTable";
-import StockTable2 from "./partials/StockTable2";
+import StockTable from "../components/StockTable";
 
 export default function Screener() {
   const [stocks, setStocks] = useState<Array<ScreenerItem>>([]);
