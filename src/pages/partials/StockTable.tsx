@@ -61,12 +61,15 @@ function Table({ columns, data, OnEntryFn }: TableParam) {
     <>
       <table {...getTableProps()}>
         <thead>
-          {headerGroups.map((headerGroup: any) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column: any) => (
+          {headerGroups.map((headerGroup: any, index: number) => (
+            <tr key={"h_group_" + index} {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column: any, colidx: number) => (
                 // Add the sorting props to control sorting. For this example
                 // we can add them into the header props
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                <th
+                  key={"col_idx_" + colidx}
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                >
                   {column.render("Header")}
                   {/* Add a sort direction indicator */}
                   <span>
@@ -86,17 +89,21 @@ function Table({ columns, data, OnEntryFn }: TableParam) {
           {rows.map((row: any, i: number) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr key={"stock_row_" + i} {...row.getRowProps()}>
                 {row.cells.map((cell: any, j: number) => {
                   if (cell.column.id == "name") {
                     return (
-                      <td {...cell.getCellProps()}>
+                      <td
+                        key={"stock_col_" + cell.column.id}
+                        {...cell.getCellProps()}
+                      >
                         <a
                           href={
                             "https://www.tradingview.com/chart/VSjoHr2O/?symbol=IDX%3A" +
                             cell.value
                           }
                           target="_blank"
+                          rel="noreferrer"
                         >
                           {cell.render("Cell")}
                         </a>
@@ -104,13 +111,19 @@ function Table({ columns, data, OnEntryFn }: TableParam) {
                     );
                   } else if (cell.column.id == "marketCap") {
                     return (
-                      <td {...cell.getCellProps()}>
+                      <td
+                        key={"stock_col_" + cell.column.id}
+                        {...cell.getCellProps()}
+                      >
                         {row.original.marketCapShort}
                       </td>
                     );
                   } else if (cell.column.id == "rpVolt") {
                     return (
-                      <td {...cell.getCellProps()}>
+                      <td
+                        key={"stock_col_" + cell.column.id}
+                        {...cell.getCellProps()}
+                      >
                         <span>
                           T<b>{row.original.tickSize}</b>|A
                           <b>{row.original.atr}</b>|
@@ -121,6 +134,7 @@ function Table({ columns, data, OnEntryFn }: TableParam) {
                   } else if (cell.column.id == "sma200diffN") {
                     return (
                       <td
+                        key={"stock_col_" + cell.column.id}
                         {...cell.getCellProps()}
                         style={{ backgroundColor: "#4ecbcb" }}
                       >
@@ -129,17 +143,30 @@ function Table({ columns, data, OnEntryFn }: TableParam) {
                     ); //high1MDiff
                   } else if (cell.column.id == "high1MDiff") {
                     return (
-                      <td {...cell.getCellProps()}>
+                      <td
+                        key={"stock_col_" + cell.column.id}
+                        {...cell.getCellProps()}
+                      >
                         {row.original.high1MDiff.toFixed(0)} Tick
                       </td>
                     );
                   } else if (cell.column.id == "change") {
                     return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}%</td>
+                      <td
+                        key={"stock_col_" + cell.column.id}
+                        {...cell.getCellProps()}
+                      >
+                        {cell.render("Cell")}%
+                      </td>
                     );
                   } else {
                     return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                      <td
+                        key={"stock_col_" + cell.column.id}
+                        {...cell.getCellProps()}
+                      >
+                        {cell.render("Cell")}
+                      </td>
                     );
                   }
                 })}

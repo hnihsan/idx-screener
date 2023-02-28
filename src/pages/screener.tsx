@@ -22,7 +22,16 @@ export default function Screener() {
 
   return (
     <main className={styles.main}>
-      {isFetched ? <StockTable items={stocks} /> : <h1>Loading</h1>}
+      {isFetched ? (
+        <StockTable
+          items={stocks}
+          OnEntry={() => {
+            console.log("hellno");
+          }}
+        />
+      ) : (
+        <h1>Loading</h1>
+      )}
     </main>
   );
 }

@@ -8,9 +8,9 @@ interface TbodyData {
 export const TbodyComp = ({ items }: TbodyData) => {
   return (
     <tbody>
-      {items.map((cell) => {
+      {items.map((cell, idx) => {
         return (
-          <tr>
+          <tr key={idx}>
             <td>
               <a
                 href={
