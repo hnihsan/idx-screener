@@ -44,18 +44,18 @@ export default class ScreenerItem {
   ) {
     this.logoId = logoId;
     this.name = name;
-    this.change = +change.toFixed(2);
+    this.change = +change?.toFixed(2);
     this.close = close;
-    this.rvol10d = +rvol10d.toFixed(2);
+    this.rvol10d = +rvol10d?.toFixed(2);
     this.high = high;
     this.low = low;
-    this.atr = +atr.toFixed(0);
+    this.atr = +atr?.toFixed(0);
     this.high1M = high1M;
     this.low1M = low1M;
     this.sma200 = sma200;
     this.sma50 = sma50;
     this.volume = volume;
-    this.volumeAvg30 = +volumeAvg30.toFixed(2);
+    this.volumeAvg30 = +volumeAvg30?.toFixed(2);
     this.marketCap = marketCap;
     // computed
     let sma50dif = sma50 - close;
@@ -63,10 +63,10 @@ export default class ScreenerItem {
     let sma200dif = sma200 - close;
     let sma200difN = sma200dif / atr;
 
-    this.sma50diff = +sma50dif.toFixed(2);
-    this.sma50diffN = +sma50difN.toFixed(2);
-    this.sma200diff = +sma200dif.toFixed(2);
-    this.sma200diffN = +sma200difN.toFixed(2); //#4ecbcb
+    this.sma50diff = +sma50dif?.toFixed(2);
+    this.sma50diffN = +sma50difN?.toFixed(2);
+    this.sma200diff = +sma200dif?.toFixed(2);
+    this.sma200diffN = +sma200difN?.toFixed(2); //#4ecbcb
 
     this.marketCapShort = Shorten(marketCap, 2);
 
